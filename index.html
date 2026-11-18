@@ -82,25 +82,25 @@ color:#9385a7;
 <div class="coin">🪙</div>
 <h3>500 Gold</h3>
 <p class="price">Starter Pack</p>
-<button onclick="alert('Coming Soon!')">Choose</button>
+<button onclick="openOrder('500')">Choose</button>
 </div>
 <div class="package">
 <div class="coin">🪙</div>
 <h3>1000 Gold</h3>
 <p class="price">Silver Pack</p>
-<button onclick="alert('Coming Soon!')">Choose</button>
+<button onclick="openOrder('1000')">Choose</button>
 </div>
 <div class="package">
 <div class="coin">💰</div>
 <h3>2500 Gold</h3>
 <p class="price">Gold Pack</p>
-<button onclick="alert('Coming Soon!')">Choose</button>
+<button onclick="openOrder('2500')">Choose</button>
 </div>
 <div class="package">
 <div class="coin">💎</div>
 <h3>5000 Gold</h3>
 <p class="price">Diamond Pack</p>
-<button onclick="alert('Coming Soon!')">Choose</button>
+<button onclick="openOrder('5000')">Choose</button>
 </div>
 </div>
 </main>
@@ -108,5 +108,34 @@ color:#9385a7;
 <footer>
 © 2026 Fable Rise MC
 </footer>
+  <div id="orderBox" style="display:none; background:#21132f; padding:25px; border-radius:15px; margin:20px; color:white; text-align:center;">
+  <h2>Choose Your Gold Package</h2>
+  <p id="selectedPackage"></p>
+  <input id="minecraftName" type="text" placeholder="Minecraft Username"
+  style="padding:12px; width:90%; border-radius:8px; border:0;">
+  <br><br>
+  <button onclick="confirmOrder()"
+  style="padding:12px 25px; background:#a855f7; color:white; border:0; border-radius:8px;">
+  Confirm
+  </button>
+  <p id="orderMessage"></p>
+</div>
+
+<script>
+  function openOrder(amount) {
+  document.getElementById("orderBox").style.display = "block";
+  document.getElementById("selectedPackage").textContent = amount + " Gold";
+  document.getElementById("orderMessage").textContent = "";
+}
+function confirmOrder() {
+  const name = document.getElementById("minecraftName").value.trim();
+  if (!name) {
+    document.getElementById("orderMessage").textContent = "Enter your Minecraft Username!";
+    return;
+  }
+  document.getElementById("orderMessage").textContent =
+    "Test order created for " + name + "! No Gold has been added.";
+}
+  </script>
 </body>
 </html>
